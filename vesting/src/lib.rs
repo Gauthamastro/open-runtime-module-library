@@ -44,6 +44,7 @@ use sp_std::{
 	convert::TryInto,
 	vec::Vec,
 };
+use scale_info::TypeInfo;
 
 mod mock;
 mod tests;
@@ -58,7 +59,7 @@ pub const VESTING_LOCK_ID: LockIdentifier = *b"ormlvest";
 ///
 /// Benefits would be granted gradually, `per_period` amount every `period`
 /// of blocks after `start`.
-#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug, MaxEncodedLen)]
+#[derive(Clone, Encode, Decode, PartialEq, Eq, RuntimeDebug, MaxEncodedLen, TypeInfo)]
 pub struct VestingSchedule<BlockNumber, Balance: HasCompact> {
 	/// Vesting starting block
 	pub start: BlockNumber,
